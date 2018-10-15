@@ -5,7 +5,10 @@ const monitor = require('node-docker-monitor');
 
 const leds = new Blinkt();
 
-const image = 'stefanscherer/whoami';
+const image =  process.env.SERVICE_IMAGE || 'bee42/whoami';
+const version_green =  process.env.SERVICE_VERSION_GREEN || '1.2.0';
+const version_blue =  process.env.SERVICE_VERSION_BLUE || '2.0.0';
+
 var containers = [];
 
 const shutdown = function () {
@@ -48,9 +51,9 @@ const color = function (container) {
     }
     return [ 255, 0, 0, (11 - container.animation) * 0.08 ];
   } else {
-    if (container.Image.includes(image+':1.1')) {
+    if (container.Image.includes(image+':'+version_green)) {
       return [ 255, 255, 0, 0.1 ];
-    } else if (container.Image.includes(image+':1.2')) {
+    } else if (container.Image.includes(image+':'+version_blue)) {
       return [ 0, 255, 255, 0.1 ];
     } else {
       return [ 255, 255, 255, 0.1 ];

@@ -1,12 +1,13 @@
-FROM hypriot/rpi-node:6.10.0 as build
+FROM node:10.12.0-alpine as build
 
 WORKDIR /code
+RUN apk --no-cache add git python make g++
 COPY package.json /code
 RUN npm install --production
 COPY app.js /code
 
-FROM hypriot/rpi-node:6.10.0-alpine
-
+FROM node:10.12.0-alpine
+LABEL maintainer peter.rossbach@bee42.com
 WORKDIR /code
 COPY --from=build /code /code
 CMD ["node", "app.js"]

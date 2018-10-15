@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-image="stefanscherer/monitor"
+image="bee42/swarm-monitor"
 docker tag monitor "$image:linux-$ARCH-$TRAVIS_TAG"
 docker push "$image:linux-$ARCH-$TRAVIS_TAG"
 
