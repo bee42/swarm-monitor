@@ -3,8 +3,7 @@
 This is a fork from https://github.com/StefanScherer/swarm-monitor
 Many Thanks to share this example with us.
 
-[![This image on DockerHub]
-(https://img.shields.io/docker/pulls/bee42/swarm-monitor.svg)](https://hub.docker.com/r/bee42/swarm-monitor/)
+[![This image on DockerHub](https://img.shields.io/docker/pulls/bee42/swarm-monitor.svg)](https://hub.docker.com/r/bee42/swarm-monitor/)
 
 The Docker Swarm Monitor shows running containers (eg. replicas of a swarm service) with the Blinkt! LED strip.
 
@@ -15,7 +14,14 @@ The Docker Swarm Monitor shows running containers (eg. replicas of a swarm servi
 | BASE_IMAGE      | Runtime base image  | node:8.12.0-alpine    |
 
 ```bash
+$ docker build --build-arg NODE_BASE_IMAGE=hypriot/rpi-node:8.1.3 
+  --build-arg BASE_IMAGE=hypriot/rpi-node:8.1.3-slim 
+  -t bee42/swarm-monitor:linux-armv7-1.3.0
+# or
 $ docker build -f Dockerfile.arm -t bee42/swarm-monitor:linux-armv7-1.3.0 .
+```
+
+```
 $ docker run -d \
   -v /sys:/sys \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -32,6 +38,7 @@ $  vi ~/.docker/config.json
   "stackOrchestrator" : "swarm",
   "experimental" :  "enabled"
 }
+```
 
 ```
 $ docker manifest inspect node:8.12.0-stretch
