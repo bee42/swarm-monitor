@@ -3,8 +3,7 @@
 This is a fork from https://github.com/StefanScherer/swarm-monitor
 Many Thanks to share this example with us.
 
-[![This image on DockerHub]
-(https://img.shields.io/docker/pulls/bee42/swarm-monitor.svg)](https://hub.docker.com/r/bee42/swarm-monitor/)
+[![This image on DockerHub](https://img.shields.io/docker/pulls/bee42/swarm-monitor.svg)](https://hub.docker.com/r/bee42/swarm-monitor/)
 
 The Docker Swarm Monitor shows running containers (eg. replicas of a swarm service) with the Blinkt! LED strip.
 
